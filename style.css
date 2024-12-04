@@ -147,3 +147,44 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.total-section {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.left-sec {
+  width: 50%;
+}
+.left-sec div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.left-sec div span {
+  font-weight: bold;
+  margin-top: 0.7rem;
+}
+
+.notes {
+  margin-top: 0.5rem;
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button[type="reset"],
+button[type="button"] {
+  background-color: #0d6efd;
+  color: white;
+  font-size: 14px;
+  padding: 10px 15px;
+}
