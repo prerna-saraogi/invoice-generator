@@ -65,7 +65,6 @@ footer p {
   font-weight: 400;
   padding: 0.5rem 0.75rem;
   border: none;
-  font-size: 0.9rem;
   width: 100%;
   border-radius: 0.25rem;
   margin: 6px 0px;
@@ -136,7 +135,7 @@ input[type="number"] {
   background: #bf0000;
 }
 #add-row {
-  background: #4caf50;
+  background: #00b000;
   margin: 0.5rem;
 }
 #add-row:hover {
