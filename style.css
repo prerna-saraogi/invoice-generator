@@ -121,3 +121,29 @@ input[type="number"] {
   max-width: 50px;
   font-size: 15px;
 }
+.btn {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 0.5rem;
+  color: white;
+  text-align: center;
+  border: none;
+}
+#delete-item {
+  background: #f44336;
+}
+#delete-item:hover {
+  background: #bf0000;
+}
+#add-row {
+  background: #4caf50;
+  margin: 0.5rem;
+}
+#add-row:hover {
+  background-color: #45a049;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
