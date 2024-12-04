@@ -7,6 +7,155 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header><h1>INVOICE GENERATOR</h1></header>
+
+    <div class="app">
+      <div id="invoice-container">
+        <!-- Invoice Title -->
+        <div class="invoice-title">TAX INVOICE</div>
+        <!-- Invoice Header -->
+        <div class="invoice-header">
+          <div class="sec-1">
+            <div>
+              <label for="invoice-date">Bill Date:</label>
+              <input
+                type="date"
+                id="invoice-date"
+                class="input-control"
+                style="max-width: 140px"
+              />
+            </div>
+            <div>
+              <label for="due-date">Due Date:</label>
+              <input
+                type="date"
+                id="due-date"
+                class="input-control"
+                style="max-width: 140px"
+                required
+              />
+            </div>
+          </div>
+          <div class="sec-2">
+            <label for="invoice-num">Invoice Number:</label>
+            <input
+              type="number"
+              id="invoice-num"
+              class="input-control"
+              value="1"
+              style="max-width: 70px"
+              required
+            />
+          </div>
+        </div>
+        <hr />
+        <!-- Billing Address Section -->
+        <div class="address-section">
+          <div>
+            <label for="bill-from">Bill From:</label>
+            <input
+              type="text"
+              placeholder="Invoice from?"
+              id="bill-from"
+              class="input-control"
+              required
+            />
+            <textarea
+              name="bill-from-address"
+              class="input-control"
+              placeholder="Billing Address"
+              rows="5"
+            ></textarea>
+          </div>
+          <div>
+            <label for="bill-to">Bill To:</label>
+            <input
+              type="text"
+              placeholder="Invoice to?"
+              id="bill-to"
+              class="input-control"
+              required
+            />
+            <textarea
+              name="bill-to-address"
+              placeholder="Billing Address"
+              rows="5"
+              class="input-control"
+            ></textarea>
+          </div>
+        </div>
+        <hr />
+        <!-- Product Section -->
+        <div class="invoice-body">
+          <table>
+            <!-- Header of Product Section  -->
+            <thead>
+              <tr>
+                <th>PRODUCT</th>
+                <th>UNIT</th>
+                <th>PRICE</th>
+                <th>AMOUNT</th>
+                <th class="action">ACTION</th>
+              </tr>
+            </thead>
+            <!-- Body of Product Section -->
+            <tbody id="item-list">
+              <tr class="single-row">
+                <td>
+                  <input
+                    type="text"
+                    placeholder="Product name"
+                    name="product name"
+                    id="product-name"
+                    class="input-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    name="unit"
+                    id="unit"
+                    class="input-control"
+                    onkeyup="getInput()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    name="price"
+                    id="price"
+                    class="input-control"
+                    onkeyup="getInput()"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    name="amount"
+                    id="amount"
+                    class="input-control amount"
+                    disabled
+                  />
+                </td>
+                <td>
+                  <button
+                    id="delete-item"
+                    class="btn delete-item"
+                    onclick="removeRow(this)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button id="add-row" class="btn add-row">Add Item</button>
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
