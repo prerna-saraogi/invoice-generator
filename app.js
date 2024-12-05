@@ -64,7 +64,7 @@ const addNewRow = () => {
                   <button
                     type="button"
                     id="delete-item"
-                    class="btn"
+                    class="btn delete-items"
                     onclick="removeRow(this)"
                   >
                     Delete
@@ -165,3 +165,74 @@ resetButton.addEventListener("click", () => {
     });
   }
 });
+
+const generatePDF = () => {
+  const invoiceElement = document.getElementById("invoice-container");
+
+  const buttons = document.querySelectorAll("button");
+  const inputs = document.querySelectorAll("input");
+  const addRowButton = document.querySelector("#add-row");
+  const deleteButtons = document.querySelectorAll(".delete-items");
+  const actions = document.querySelectorAll(".action");
+
+  // Hide buttons and prepare for PDF generation
+  buttons.forEach((button) => (button.style.display = "none"));
+  inputs.forEach((input) => {
+    input.style.padding = "5px 0px";
+    input.style.background = "transparent";
+    input.style.margin = "0px";
+  });
+
+  if (addRowButton) addRowButton.style.display = "none";
+  deleteButtons.forEach((button) => (button.style.display = "none"));
+  actions.forEach((action) => (action.style.display = "none"));
+
+  // Options for html2pdf
+  const options = {
+    margin: 1,
+    filename: "invoice.pdf",
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+  };
+
+  // Generate and save the PDF
+  html2pdf()
+    .set(options)
+    .from(invoiceElement)
+    .save()
+    .then(() => {
+      // Restore the original styles after generating the PDF
+      buttons.forEach((button) => (button.style.display = "block"));
+      inputs.forEach((input) => {
+        input.style.padding = "";
+        input.style.background = "";
+        input.style.margin = "";
+      });
+
+      if (addRowButton) addRowButton.style.display = "inline-block";
+      deleteButtons.forEach(
+        (button) => (button.style.display = "inline-block")
+      );
+      actions.forEach((action) => (action.style.display = "inline-block"));
+    })
+    .catch((error) => {
+      console.error("Error generating PDF:", error);
+
+      // Restore styles even if there is an error
+      buttons.forEach((button) => (button.style.display = "block"));
+      inputs.forEach((input) => {
+        input.style.padding = "";
+        input.style.background = "";
+        input.style.margin = "";
+      });
+
+      if (addRowButton) addRowButton.style.display = "inline-block";
+      deleteButtons.forEach(
+        (button) => (button.style.display = "inline-block")
+      );
+      actions.forEach((action) => (action.style.display = "inline-block"));
+    });
+};
+
+// Attach the updated event listener
+document.getElementById("generate-pdf").addEventListener("click", generatePDF);

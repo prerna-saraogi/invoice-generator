@@ -9,6 +9,12 @@
       href="https://fonts.googleapis.com/css?family=Nunito"
     />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.0/html2pdf.bundle.min.js"
+      integrity="sha512-YLG3N5dufxTTEyEgDIKb3IMDTz/NsWiGH6+6OvzrJBu/XZNRiZb9UxuNoMn8RdTtuKgpjtzTeWm/ITkZkj2i3Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <header><h1>INVOICE GENERATOR</h1></header>
@@ -47,7 +53,6 @@
               id="invoice-num"
               class="input-control"
               value="1"
-              style="max-width: 70px"
               required
             />
           </div>
@@ -148,7 +153,7 @@
                   <button
                     type="button"
                     id="delete-item"
-                    class="btn"
+                    class="btn delete-items"
                     onclick="removeRow(this)"
                   >
                     Delete
